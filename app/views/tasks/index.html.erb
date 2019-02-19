@@ -1,0 +1,10 @@
+<h1>Tasks#index</h1>
+<% @tasks.each do |task| %>
+  <h2><%= task.title %></h2>
+  <!-- need to pass an argument task for each task during the iteration to go to tasks#edit-->
+  <p><%= link_to "Edit", edit_task_path(task) %></p>
+<!-- don't need to pass an argument task here.  -->
+<p><%= link_to "Create", new_task_path %></p>
+
+
+
