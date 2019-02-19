@@ -1,10 +1,17 @@
 <h1>Tasks#index</h1>
+
+<div class = list>
 <% @tasks.each do |task| %>
-  <h2><%= task.title %></h2>
+<!-- task.title just show the title of the task string. the path  -->
+  <h2><%= link_to task.title, task_path(task) %></h2>
   <!-- need to pass an argument task for each task during the iteration to go to tasks#edit-->
-  <p><%= link_to "Edit", edit_task_path(task) %></p>
-<!-- don't need to pass an argument task here.  -->
-<p><%= link_to "Create", new_task_path %></p>
+  <%= link_to task_path(task), method: :delete, data: { confirm: "Delete #{task.title}?" } do %>
+   <i class="fas fa-trash-alt"></i>
+  <% end %>
+<% end %>
+<br>
 
-
+<!-- don't need to pass an argument task here. because create has no task yet -->
+<%= button_to "Create", new_task_path, class: "btn btn-danger", method: "get"%>
+</div>
 

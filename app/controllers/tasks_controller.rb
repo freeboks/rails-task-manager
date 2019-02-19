@@ -6,7 +6,6 @@ class TasksController < ApplicationController
   end
 
   def show
-    @task = Task.find(params[:id])
   end
 
 # CREATE
@@ -15,10 +14,10 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
-    if @task.save
+    task = Task.new(task_params)
+    if task.save
       # take you to show page and show the task you've made
-      redirect_to task_path(@task)
+      redirect_to task_path(task)
     else
       render :new
     end
@@ -29,6 +28,8 @@ class TasksController < ApplicationController
   end
 
   def update
+    # task_params are task object
+    @task.update(task_params)
     if params["task"]["completed"].to_i == 1
       @task.completed = true
     end

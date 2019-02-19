@@ -1,9 +1,20 @@
 <h1>Tasks#show</h1>
-<h2><%=@task.title%></h2>
-<p>details: <%= @task.details %></p>
-<p>completed: <%= @task.completed %></p>
-<%= link_to "Delete", tasks_path(task), method: :delete %>
+<div class="container">
+
+    <!-- getting @ task from tasks controller #show (set_task private method) -->
+    <h2><%=@task.title%></h2>
+    <p>details: <%= @task.details %></p>
+
+    <% if @task.completed %>
+      <i class="fab fa-angrycreative"></i><p style= "color: blue">This task is completed</p>
+    <% else %>
+      <i class="far fa-sad-cry"></i><p style= "color: red">This task is not yet completed</p>
+    <% end %>
 
 
+    <p><%= link_to "Edit", edit_task_path(@task) %></p>
+    <%= link_to root_path do %>
+      <i class="fas fa-home"></i>
+    <% end %>
 
-
+</div>

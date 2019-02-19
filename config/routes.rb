@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'tasks#index'
   # index read all
   get 'tasks', to: 'tasks#index', as: :tasks
   # create
